@@ -3,8 +3,68 @@
 <head>
 	<meta charset="UTF-8">
 	<title>lixin</title>
+	<style>
+		body{
+			background-color: #000;
+			-webkit-perspective: 800px;
+			-webkit-perspective-origin: 60% -100%;
+		}
+		#container{
+			width: 200px;
+			height: 200px;
+			margin: 200px auto;
+			-webkit-transform-style: preserve-3d;
+			-webkit-animation: rol 2s linear infinite;
+		}
+		@-webkit-keyframes rol{
+			from{
+
+			}
+			to{
+				-webkit-transform: rotateY(-360deg);
+			}
+		}
+		.square{
+			width: 200px;
+			height: 200px;
+			background: url(../img/img01.jpg) no-repeat;
+			opacity: .6;
+			/*background-color: rgba(255, 255, 255, .6);*/
+			border: 1px solid #fff;
+			position: absolute;
+			font-size: 60px;
+			text-align: center;
+			line-height: 200px;
+			border-radius: 10px;
+		}
+		.one{
+			-webkit-transform: rotateY(180deg) translateZ(100px);
+		}
+		.two{
+			-webkit-transform: rotateY(-90deg) translateZ(100px);
+		}
+		.three{
+			-webkit-transform: rotateY(90deg) translateZ(100px);
+		}
+		.four{
+			-webkit-transform: rotateX(90deg) translateZ(100px);
+		}
+		.five{
+			-webkit-transform: rotateX(-90deg) translateZ(100px);
+		}
+		.six{
+			-webkit-transform: translateZ(100px);
+		}
+	</style>
 </head>
 <body>
-	<h1>lixin</h1>
+	<div id="container">
+		<div class='square one'>栗鑫</div>
+		<div class='square two'>欢</div>
+		<div class='square three'>迎</div>
+		<div class='square four'>栗</div>
+		<div class='square five'>鑫</div>
+		<div class='square six'>你</div> 
+	</div>
 </body>
 </html>
