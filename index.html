@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>lixin</title>
+	<title>Document</title>
 	<style>
 		body{
 			background-color: #000;
@@ -14,7 +14,7 @@
 			height: 200px;
 			margin: 200px auto;
 			-webkit-transform-style: preserve-3d;
-			-webkit-animation: rol 2s linear infinite;
+			-webkit-animation: rol 4s linear infinite;
 		}
 		@-webkit-keyframes rol{
 			from{
@@ -27,10 +27,11 @@
 		.square{
 			width: 200px;
 			height: 200px;
-			background-color: #fff;
+			
 			opacity: .6;
 			/*background-color: rgba(255, 255, 255, .6);*/
 			border: 1px solid #fff;
+			color: white;
 			position: absolute;
 			font-size: 60px;
 			text-align: center;
@@ -39,32 +40,38 @@
 		}
 		.one{
 			-webkit-transform: rotateY(180deg) translateZ(100px);
+			background: url(img/IMG.png) no-repeat;
 		}
 		.two{
 			-webkit-transform: rotateY(-90deg) translateZ(100px);
+			background: url(img/IMG1.png) no-repeat;
 		}
 		.three{
 			-webkit-transform: rotateY(90deg) translateZ(100px);
+			background: url(img/IMG2.png) no-repeat;
 		}
 		.four{
 			-webkit-transform: rotateX(90deg) translateZ(100px);
+			background: url(img/IMG3.png) no-repeat;
 		}
 		.five{
 			-webkit-transform: rotateX(-90deg) translateZ(100px);
+			background: url(img/IMG4.png) no-repeat;
 		}
 		.six{
 			-webkit-transform: translateZ(100px);
+			background: url(img/IM.png) no-repeat;
 		}
 	</style>
 </head>
 <body>
 	<div id="container">
-		<div class='square one'>欢</div>
-		<div class='square two'>迎</div>
-		<div class='square three'>问</div>
-		<div class='square four'>栗</div>
-		<div class='square five'>鑫</div>
-		<div class='square six'>访</div> 
+		<div class='square one'>生</div>
+		<div class='square two'>日</div>
+		<div class='square three'>乐</div>
+		<div class='square four'>W</div>
+		<div class='square five'>B</div>
+		<div class='square six'>快</div> 
 	</div>
 </body>
 </html>
