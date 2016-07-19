@@ -2,19 +2,21 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>LiXin</title>
+	<title>栗鑫</title>
 	<style>
 		body{
 			background-color: #000;
 			-webkit-perspective: 800px;
 			-webkit-perspective-origin: 60% -100%;
+			background-image: url(james.jpg);
+			background-repeat: no-repeat;
 		}
 		#container{
 			width: 200px;
 			height: 200px;
 			margin: 200px auto;
 			-webkit-transform-style: preserve-3d;
-			-webkit-animation: rol 4s linear infinite;
+			-webkit-animation: rol 3s linear infinite;
 		}
 		@-webkit-keyframes rol{
 			from{
@@ -27,51 +29,50 @@
 		.square{
 			width: 200px;
 			height: 200px;
-			
 			opacity: .6;
 			/*background-color: rgba(255, 255, 255, .6);*/
 			border: 1px solid #fff;
-			color: white;
 			position: absolute;
 			font-size: 60px;
 			text-align: center;
 			line-height: 200px;
 			border-radius: 10px;
+			color: white;
 		}
 		.one{
 			-webkit-transform: rotateY(180deg) translateZ(100px);
-			background: url(IMG.png) no-repeat;
+			background-image: url(james1.png);
 		}
 		.two{
 			-webkit-transform: rotateY(-90deg) translateZ(100px);
-			background: url(IMG1.png) no-repeat;
+			background-image: url(james2.png);
 		}
 		.three{
 			-webkit-transform: rotateY(90deg) translateZ(100px);
-			background: url(IMG2.png) no-repeat;
+			background-image: url(james3.png);
 		}
 		.four{
 			-webkit-transform: rotateX(90deg) translateZ(100px);
-			background: url(IMG3.png) no-repeat;
+			background-image: url(james4.png);
 		}
 		.five{
 			-webkit-transform: rotateX(-90deg) translateZ(100px);
-			background: url(IMG4.png) no-repeat;
+			background-image: url(james5.png);
 		}
 		.six{
 			-webkit-transform: translateZ(100px);
-			background: url(IM.png) no-repeat;
+			background-image: url(james6.png);s
 		}
 	</style>
 </head>
 <body>
 	<div id="container">
-		<div class='square one'>生</div>
-		<div class='square two'>日</div>
-		<div class='square three'>乐</div>
-		<div class='square four'>W</div>
-		<div class='square five'>B</div>
-		<div class='square six'>快</div> 
+		<div class='square one'>L</div>
+		<div class='square two'>B</div>
+		<div class='square three'>!</div>
+		<div class='square four'>23</div>
+		<div class='square five'>23</div>
+		<div class='square six'>J</div> 
 	</div>
 </body>
 </html>
