@@ -12,6 +12,20 @@
 			background-image: url(james.jpg);
 			background-repeat: no-repeat;
 		}
+		#nav{
+			color: white;
+			margin-left: 50px;
+		}
+		#nav li{
+			list-style: none;
+			font-size: 30px;
+			margin-right: 50px;
+			float: left;
+			cursor: pointer;
+		}
+		#nav li:hover{
+			color: gray;
+		}
 		#container{
 			width: 200px;
 			height: 200px;
@@ -64,9 +78,31 @@
 			-webkit-transform: translateZ(100px);
 			background-image: url(james6.png);s
 		}
+		#article{
+			color: white;
+			width: 400px;
+			height: 500px;
+			border: 2px dashed white;
+			margin-left: 50px;
+		}
+		#img{
+			background-image: url('img/IMG.png');
+			background-repeat: no-repeat;
+			width: 200px;
+			height: 267px;
+		}
 	</style>
 </head>
 <body>
+	<div id="nav">
+		<ul>
+			<li>首页</li>
+			<li>前端笔记</li>
+			<li>NBA聚集地</li>
+			<li>心理交流站</li>
+			<li>关于</li>
+		</ul>
+	</div>
 	<div id="container">
 		<div class='square one'>L</div>
 		<div class='square two'>B</div>
@@ -74,6 +110,13 @@
 		<div class='square four'>23</div>
 		<div class='square five'>23</div>
 		<div class='square six'>J</div> 
+	</div>
+	<div id="article">
+		<div id="img"></div>
+		<div id="person">
+			<h2>个人简介</h2>
+			<p>  栗鑫，中共预备党员，96年生人，出生在黑龙江省佳木斯市，目前就读于黑龙江大学计算机科学技术学院物联网工程专业，现任14级物联网一班班长、院学生会生活部部长、黑大箐马工程二期学员、大学生创业创新实验室成员，在校期间曾获“校三等奖学金”、“优秀学生干部”、“优秀特困大学生”、“校ACM大赛一等奖”。</p>
+		</div>
 	</div>
 </body>
 =======
