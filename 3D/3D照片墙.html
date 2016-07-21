@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#container{
+			width: 500px;
+			height: 400px;
+			margin: 100px auto;
+			position: relative;
+		}
+		#container img{
+			width: 500px;
+			height: 400px;
+			position: absolute;
+			opacity: 0;
+			-webkit-transform-origin: bottom;
+			-webkit-perspective: 800px;
+		}
+		#container span{
+			position: absolute;
+			top: 50%;
+			width: 50px;
+			height: 60px;
+			background-color: gray;
+			font-size: 50px;
+			border-radius: 50%;
+			text-align: center;
+			line-height: 60px;
+			-webkit-box-shadow: 10px 10px 10px #111;
+			color: white;
+			font-weight: 5px;
+			-webkit-text-stroke: 1px #000;
+		}
+		#prev{
+			left: -100px;
+		}
+		#next{
+			left: 550px;
+		}
+		#container .show{
+			-webkit-animation: show 1s ease-in forwards;
+		}
+		@-webkit-keyframes show{
+			0%{
+				opacity: 0;
+				-webkit-transform: rotateX(180deg);
+			}
+			/*50%{
+				-webkit-transform: skew(30deg);
+			}
+			60%{
+				-webkit-transform: skew(-30deg);
+			}*/
+			100%{
+				opacity: 1;
+				-webkit-transform: rotateX(0deg);
+			}
+		}
+		#container .hide{
+			-webkit-animation: hide .5s ease-in forwards;
+		}
+		@-webkit-keyframes hide{
+			0%{
+				opacity: 1;
+				-webkit-transform: rotateX(0deg);
+			}
+			99%{
+				-webkit-transform: scale(0.5);
+			}
+			100%{
+				opacity: 0;
+				-webkit-transform: rotateX(-180deg);
+			}
+		}
+		#container .show1{
+			-webkit-animation: show1 .5s ease-in forwards;
+		}
+		@-webkit-keyframes show1{
+			0%{
+				opacity: 0;
+				-webkit-transform: rotateX(-180deg);
+			}
+			50%{
+				-webkit-transform: scale(0.5);
+			}
+			100%{
+				opacity: 1;
+				-webkit-transform: rotateX(0deg);
+			}
+		}
+		#container .hide1{
+			-webkit-animation: hide1 .5s ease-in forwards;
+		}
+		@-webkit-keyframes hide1{
+			0%{
+				opacity: 1;
+				-webkit-transform: rotateX(0deg);
+			}
+			99%{
+				/*-webkit-transform: scale(0.5);*/
+			}
+			100%{
+				opacity: 0;
+				-webkit-transform: rotateX(180deg);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<img src="../img/img01.jpg" class="show">
+		<img src="../img/img02.jpg">
+		<img src="../img/6.jpg">
+		<img src="../img/7.jpg">
+		<span id="prev"><</span>
+		<span id="next">></span>
+	</div>
+
+	<script>
+		var oPrev = document.getElementById('prev'),
+			oNext = document.getElementById('next'),
+			aImg = document.getElementsByTagName('img');
+
+		var nowIdex = 0;
+
+		oNext.onclick = function(){
+			aImg[nowIdex].className = 'hide';
+			nowIdex++;
+			if(nowIdex == aImg.length){
+				nowIdex = 0;
+			}
+			aImg[nowIdex].className = 'show';
+		};
+		oPrev.onclick = function(){
+			aImg[nowIdex].className = 'hide1';
+			nowIdex--;
+			if(nowIdex == -1){
+				nowIdex = aImg.length-1;
+			}
+			aImg[nowIdex].className = 'show1';
+		};
+	</script>
+</body>
+</html>
