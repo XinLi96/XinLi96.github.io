@@ -275,7 +275,7 @@
 							col: j,
 							row: i,
 							left: j *(THU_IMG_WIDTH + iColGap) + iColGap,
-							top: i * (THU_IMG_HEIGHT + iRowGap) + iRowGap + 1200
+							top: i * (THU_IMG_HEIGHT + iRowGap) + iRowGap + 1700 
 						};
 						oDiv.index = index;
 						oContainer.appendChild(oDiv);
@@ -283,11 +283,16 @@
 				}
 
 			}
-
+			// index = 24;
+			var aleft = 0;
+			var atop = 0;
 			var timer = setInterval(function(){
-				aImg[--index].style.left = aImg[index].pos.left + 'px';
-				aImg[index].style.top = aImg[index].pos.top + 'px';
-				setStyle(aImg[index], 'transform', 'rotate('+ (Math.random()*40 - 20) +'deg)');
+				// aImg[--index].style.left = aImg[index].pos.left + 'px';
+				// aImg[index].style.top = aImg[index].pos.top + 'px';
+				aleft = aImg[--index].pos.left + 500;
+				atop = aImg[index].pos.top;
+				setStyle(aImg[index], 'transform', 'translate('+ aleft +'px,'+ atop +'px)');
+				// setStyle(aImg[index], 'transform', 'rotate('+ (Math.random()*40 - 20) +'deg)');
 				if(index == 0){
 					clearInterval(timer);
 				}
@@ -301,10 +306,13 @@
 				if(target != oContainer){
 					if(bClick){//将图片打散
 						for(var i = 0; i < NUM; i++){
-							aImg[i].style.left = aImg[i].pos.left + 'px';
-							aImg[i].style.top = aImg[i].pos.top + 'px';
+							// aImg[i].style.left = aImg[i].pos.left + 'px';
+							// aImg[i].style.top = aImg[i].pos.top + 'px';
 							aImg[i].style.borderWidth = '5px';
-							setStyle(aImg[i], 'transform', 'rotate('+ (Math.random()*40 - 20) +'deg)')
+							aleft = aImg[i].pos.left + 500;
+							atop = aImg[i].pos.top;
+							setStyle(aImg[i], 'transform', 'translate('+ aleft +'px,'+ atop +'px)');
+							// setStyle(aImg[i], 'transform', 'rotate('+ (Math.random()*40 - 20) +'deg)')
 							var oSpan = aImg[i].getElementsByTagName('span')[0];
 							oSpan.style.opacity = 0;
 						}
@@ -316,10 +324,13 @@
 							top: (oContainer.offsetHeight - BIG_IMG_HEIGHT) / 2 + 1200
 						}
 						for(var i=0; i < NUM; i++){
-							aImg[i].style.left = (bigImgPos.left + aImg[i].pos.col * THU_IMG_WIDTH) + 'px';
-							aImg[i].style.top = (bigImgPos.top + aImg[i].pos.row * THU_IMG_HEIGHT) + 'px';
+							// aImg[i].style.left = (bigImgPos.left + aImg[i].pos.col * THU_IMG_WIDTH) + 'px';
+							// aImg[i].style.top = (bigImgPos.top + aImg[i].pos.row * THU_IMG_HEIGHT) + 'px';
+							var w = bigImgPos.left + aImg[i].pos.col * THU_IMG_WIDTH + 500;
+							var x = bigImgPos.top + aImg[i].pos.row * THU_IMG_HEIGHT + 500;
+							// setStyle(aImg[i], 'transform', 'translate('+ w +'px,'+ x +')');
 							aImg[i].style.borderWidth = '1px'; 
-							setStyle(aImg[i], 'transform', 'rotate(0deg)');
+							setStyle(aImg[i], 'transform', 'rotate(0deg) translate('+ w +'px,'+ x +'px)');
 							var oSpan = aImg[i].getElementsByTagName('span')[0];
 							oSpan.style.opacity = 1;
 							oSpan.style.backgroundImage = 'url(3D/img/'+ target.parentNode.index +'.jpg)';
