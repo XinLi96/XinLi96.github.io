@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		h3{
+			background-color: #ccc;
+			width: 960px;
+			height: 90px;
+			text-align: center;
+			line-height: 90px;
+			margin: 50px auto;
+		}
+		#img{
+			background: url(james.jpg) no-repeat center;
+			height: 900px;
+			width: 960px;
+			margin: 0 auto;
+			background-size: contain;
+		}
+		article{
+			width: 960px;
+			height: 300px;
+			margin: 0 auto;
+		}
+		#left{
+			width: 630px;
+			height: 300px;
+			float: left;
+			background-color: #f00;
+			word-break: break-all;
+			display: table;
+		}
+		#right{
+			width: 300px;
+			height: 300px;
+			float: right;
+			background-color: #0f0;
+			word-break: break-all;
+			display: table;
+		}
+		#left p,#right p{
+			text-align: center;
+			display: table-cell;
+			vertical-align: middle;
+		}
+		@media screen and (max-width: 1199px){
+			header, nav, footer{
+				width: 100%;
+			}
+			h3{
+				width: 100%;
+			}
+			article{
+				width: 100%;
+			}
+			#left{
+				width: 67%;
+			}
+			#right{
+				width: 30%;
+			}
+			#img{
+				width: 100%;
+				height: 0;
+				padding-top: 62%;
+				/*height: width * 62%;*/
+				/*background-size: 100% 100% contain;*/
+			}
+		}
+		@media screen and (max-width: 769px){
+			#left{
+				width: 100%;
+			}
+			#right{
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h3>页眉</h3>
+	</header>
+	<nav>
+		<h3>导航</h3>
+	</nav>
+	<div id="banner">
+		<div id="img"></div>
+	</div>
+	<article>
+		<div id="left">
+			<p>ijfsdiofsildjfsdn     fjsdnfjsdnjasdnkjsandkjnaskdjnsakjdnkasjdjkasbdjasbdsadkjasndasndlsandlasndaksndl   kasndnnfjkdsnfsdknvkjdsnkfjnsdjfnjkdsfs</p>
+		</div>
+		<div id="right">
+			<p>dfkdslkflsdlf ndsklfndsklnfldk  snfflkdnasdklsjdkskdaldfslkndslkf</p>
+		</div>
+	</article>
+	<footer>
+		<h3>页脚</h3>
+	</footer>
+</body>
+</html>
