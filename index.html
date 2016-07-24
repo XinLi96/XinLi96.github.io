@@ -78,16 +78,16 @@
 			-webkit-transform: translateZ(100px);
 			background-image: url(james6.png);s
 		}
-		#article{
+		#person{
 			color: white;
 			width: 28%;
 			height: 500px;
 			border: 2px dashed white;
 			margin-left: 2%;
-			margin-right: 1%;
+			margin-right: 2%;
 			float: left;
 		}
-		#art-img{
+		#per-img{
 			background-image: url('img/IMG.png');
 			background-repeat: no-repeat;
 			width: 200px;
@@ -126,64 +126,13 @@
 			margin: 0 auto;
 		}
 
-
-		#container1{
-			width: 100%;
-			height: 100%;
-			/*background-image: url(img/bg.jpg);*/
-		}
-		#container1 .img{
-			border: 5px #fff solid;
-			-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
-			-moz-box-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
-			-o-box-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
-			-ms-box-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
-			box-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
-			position: absolute;
-			left: -500px;
-			top: -500px;
-			-webkit-transition: all 1s ease-in-out;
-			-moz-transition: all 1s ease-in-out;
-			-o-transition: all 1s ease-in-out;
-			-ms-transition: all 1s ease-in-out;
-			transition: all 1s ease-in-out;
-		}
-		#container1 span{
-			width: 100%;
-			height: 100%;
-			opacity: 0;
-			position: absolute;
-			left: 0;
-			right: 0;
-			background-repeat: no-repeat;
-			-webkit-transition: all 1s ease-in-out;
-			-moz-transition: all 1s ease-in-out;
-			-o-transition: all 1s ease-in-out;
-			-ms-transition: all 1s ease-in-out;
-			transition: all 1s ease-in-out;
-		}
-		#prev,#next{
-			width: 60px;
-			height: 60px;
-			background-repeat: no-repeat;
-			display: none;
-			background-color: #ffffff;
-			position: absolute;
-			cursor: pointer;
-			background-position: center;
-			top: 1500px;
-		}
-		#prev{
-			background-image: url(3D/img/prev.png);
-			border-radius: 0 8px 8px 0;
-		}
-		#next{
-			background-image: url(3D/img/next.png);
-			border-radius: 8px 0 0 8px;
-			left: 95%;
-		}
-		@media screen and (max-width: 639px){
-			
+		@media screen and (max-width: 1000px){
+			#person, #life, #basket{
+				width: 100%;
+				margin-left: 0;
+				margin-left: 0;
+				margin-top: 10px;
+			}
 		}
 	</style>
 </head>
@@ -205,12 +154,11 @@
 		<div class='square five'>23</div>
 		<div class='square six'>J</div> 
 	</div>
-	<div id="article">
-		<div id="art-img"></div>
-		<div id="person">
+	<div id="person">
+		<div id="per-img"></div>
+
 			<h2>个人简介</h2>
 			<p>  栗鑫，中共预备党员，96年生人，出生在黑龙江省佳木斯市，目前就读于黑龙江大学计算机科学技术学院物联网工程专业，现任14级物联网一班班长、院学生会生活部部长、黑大箐马工程二期学员、大学生创业创新实验室成员，在校期间曾获“校三等奖学金”、“优秀学生干部”、“优秀特困大学生”、“校ACM大赛一等奖”。</p>
-		</div>
 	</div>
 	<div id="life">
 		<div id="life-img">
@@ -223,182 +171,8 @@
 		<h2>关于篮球</h2>
 		<p>  从开始接触篮球到看NBA就喜欢上了詹姆斯，他身上那种不凡的霸气、无私、勇敢，都一直是我心中的榜样，直到2016年为家乡带来一个总冠军，全美的人民都为之折服，在我心中永远都是爱篮球、爱生活。</p>
 	</div>
-	<div id="container1"></div>
-	<span id="prev"></span>
-	<span id="next"></span>
 </body>
-<script>
-		(function(){
-			var BIG_IMG_WIDTH = 750,
-				THU_IMG_WIDTH = 125,
-				BIG_IMG_HEIGHT = 500,
-				THU_IMG_HEIGHT = 125,
-				COL = 6,
-				ROW = 4,
-				NUM = COL * ROW;
-			var oContainer = document.getElementById('container1');
-			var aImg = document.getElementsByClassName('img');
 
-			var count = 0;//用于计数
-			var index = 0;
-			var bClick = false;//用于标志照片墙的状态
-			for(var i = 0; i < NUM; i++){//图片预加载
-				var thumbImg = new Image();
-				thumbImg.onload = function(){
-					count++;
-					if(count == NUM * 2){//图片大24，小24共48
-						loadSuccess();
-					}
-				};
-				thumbImg.src = '3D/img/thumbs/'+ (i + 1) +'.jpg';
-
-				var bigImg = new Image();
-				bigImg.onload = function(){
-					count++;
-						if(count == NUM * 2){//图片大24，小24共48
-							loadSuccess();
-						}
-				};
-				bigImg.src = '3D/img/'+ (i + 1) +'.jpg';
-			}
-
-			var iColGap = (oContainer.offsetWidth - THU_IMG_WIDTH * COL) / (COL + 1);
-			var iRowGap = (oContainer.offsetHeight - THU_IMG_HEIGHT * ROW) / (ROW + 1);
-			function loadSuccess(){//创建24个div
-				for(var i = 0; i < ROW; i++){
-					for(var j = 0; j < COL; j++){
-						index++;
-						var oDiv = document.createElement('div');
-						oDiv.className = 'img';
-						oDiv.style.width = THU_IMG_WIDTH + 'px';
-						oDiv.style.height = THU_IMG_HEIGHT + 'px';
-						oDiv.style.backgroundImage = 'url(3D/img/thumbs/'+ index +'.jpg)';
-						oDiv.innerHTML = '<span></span>';
-						oDiv.pos = {
-							col: j,
-							row: i,
-							left: j *(THU_IMG_WIDTH + iColGap) + iColGap,
-							top: i * (THU_IMG_HEIGHT + iRowGap) + iRowGap + 1700 
-						};
-						oDiv.index = index;
-						oContainer.appendChild(oDiv);
-					}
-				}
-
-			}
-			// index = 24;
-			var aleft = 0;
-			var atop = 0;
-			var timer = setInterval(function(){
-				// aImg[--index].style.left = aImg[index].pos.left + 'px';
-				// aImg[index].style.top = aImg[index].pos.top + 'px';
-				aleft = aImg[--index].pos.left + 500;
-				atop = aImg[index].pos.top;
-				setStyle(aImg[index], 'transform', 'translate('+ aleft +'px,'+ atop +'px)');
-				// setStyle(aImg[index], 'transform', 'rotate('+ (Math.random()*40 - 20) +'deg)');
-				if(index == 0){
-					clearInterval(timer);
-				}
-			},100);
-
-			var oPrev = document.getElementById('prev');
-			var oNext = document.getElementById('next');
-			var nowIdx = 0;
-			oContainer.onclick = function(e){
-				var target = e.target;
-				if(target != oContainer){
-					if(bClick){//将图片打散
-						for(var i = 0; i < NUM; i++){
-							// aImg[i].style.left = aImg[i].pos.left + 'px';
-							// aImg[i].style.top = aImg[i].pos.top + 'px';
-							aImg[i].style.borderWidth = '5px';
-							aleft = aImg[i].pos.left + 500;
-							atop = aImg[i].pos.top;
-							setStyle(aImg[i], 'transform', 'translate('+ aleft +'px,'+ atop +'px)');
-							// setStyle(aImg[i], 'transform', 'rotate('+ (Math.random()*40 - 20) +'deg)')
-							var oSpan = aImg[i].getElementsByTagName('span')[0];
-							oSpan.style.opacity = 0;
-						}
-						oPrev.style.display = 'none';
-						oNext.style.display = 'none';
-					}else{//将图片合并
-						var bigImgPos = {
-							left: (oContainer.offsetWidth - BIG_IMG_WIDTH) / 2,
-							top: (oContainer.offsetHeight - BIG_IMG_HEIGHT) / 2 + 1200
-						}
-						for(var i=0; i < NUM; i++){
-							// aImg[i].style.left = (bigImgPos.left + aImg[i].pos.col * THU_IMG_WIDTH) + 'px';
-							// aImg[i].style.top = (bigImgPos.top + aImg[i].pos.row * THU_IMG_HEIGHT) + 'px';
-							var w = bigImgPos.left + aImg[i].pos.col * THU_IMG_WIDTH + 500;
-							var x = bigImgPos.top + aImg[i].pos.row * THU_IMG_HEIGHT + 500;
-							// setStyle(aImg[i], 'transform', 'translate('+ w +'px,'+ x +')');
-							aImg[i].style.borderWidth = '1px'; 
-							setStyle(aImg[i], 'transform', 'rotate(0deg) translate('+ w +'px,'+ x +'px)');
-							var oSpan = aImg[i].getElementsByTagName('span')[0];
-							oSpan.style.opacity = 1;
-							oSpan.style.backgroundImage = 'url(3D/img/'+ target.parentNode.index +'.jpg)';
-							oSpan.style.backgroundPosition = -aImg[i].pos.col * THU_IMG_WIDTH + 'px ' + (-aImg[i].pos.row * THU_IMG_HEIGHT) + 'px';
-							nowIdx = target.parentNode.index;
-						}
-						
-						oPrev.style.display = 'block';
-						oNext.style.display = 'block';
-					}
-					bClick = !bClick;
-				}
-			};
-
-			oPrev.onclick = oNext.onclick = function(){
-				if(this == oNext){
-					nowIdx++;
-					if(nowIdx == NUM+1){
-						nowIdx = 1;
-					}
-					var arr = [];
-					for(var i = 0; i<NUM; i++){
-						arr.push(i);
-					}
-					arr.sort(function(){
-						return Math.random() - 0.5;
-					})
-					var timer = setInterval(function(){
-						var j = arr.pop();
-						var oSpan = aImg[j].getElementsByTagName('span')[0];
-						oSpan.style.backgroundImage = 'url(3D/img/'+ nowIdx +'.jpg)'
-						if(arr.length == 0){
-							clearInterval(timer);
-						}
-					},50);
-				}else{
-					nowIdx--;
-					if(nowIdx == 0){
-						nowIdx = NUM;
-					}
-					var arr = [];
-					for(var i = 0; i<NUM; i++){
-						arr.push(i);
-					}
-					arr.sort(function(){
-						return Math.random() - 0.5;
-					})
-					var timer = setInterval(function(){
-						var j = arr.pop();
-						var oSpan = aImg[j].getElementsByTagName('span')[0];
-						oSpan.style.backgroundImage = 'url(3D/img/'+ nowIdx +'.jpg)'
-						if(arr.length == 0){
-							clearInterval(timer);
-						}
-					},50);
-				}
-			};
-			
-			function setStyle(elem, prop, val){
-				['Webkit','Moz','Ms','O',''].forEach(function(p){
-					elem.style[p + prop.charAt(0).toUpperCase() + prop.substring(1)] = val;
-				});
-			}
-		})()
-	</script>
 =======
 >>>>>>> origin/master
 </html>
