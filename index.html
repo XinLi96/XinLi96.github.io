@@ -207,7 +207,7 @@
 					for(var i = 0;i < 9; i++){
 						(function(idx){//闭包  内部函数调用外部函数的变量
 						setTimeout(function(){
-							aImg[idx].style.webkitTransform = 'rotateY('+ (9-idx) * 40 +'deg) translateZ(200px)';
+							// aImg[idx].style.webkitTransform = 'rotateY('+ (9-idx) * 40 +'deg) translateZ(100px)';
 					
 						},(9 - idx)*100);
 						})(i)
@@ -215,7 +215,7 @@
 					
 				}
 			};
-			oImg.src = 'img/qx'+ (i + 1) +'.jpg';
+			oImg.src = 'img/qx'+ (i + 1) +'.png';
 			oContainer1.appendChild(oImg);
 		}
 
