@@ -133,6 +133,24 @@
 				margin-left: 0;
 				margin-top: 10px;
 			}
+		body{
+            -webkit-perspective: 800px;
+            -webkit-perspective-origin: 50% -90%;
+        }
+
+		#container1{
+			width: 125px;
+			height: 125px;
+			/*background-color: #f00;*/
+			background-repeat: no-repeat;
+			margin: 200px auto;
+			-webkit-transform-style: preserve-3d;
+			-webkit-transition: all 0.5s linear;
+		}
+		#container1 img{
+			position: absolute;
+			-webkit-transition: all 0.5s linear;
+		}
 		}
 	</style>
 </head>
@@ -171,7 +189,41 @@
 		<h2>关于篮球</h2>
 		<p>  从开始接触篮球到看NBA就喜欢上了詹姆斯，他身上那种不凡的霸气、无私、勇敢，都一直是我心中的榜样，直到2016年为家乡带来一个总冠军，全美的人民都为之折服，在我心中永远都是爱篮球、爱生活。</p>
 	</div>
+	<div id="container1">
+		
+	</div>
 </body>
+<script>
+		var oContainer1 = document.querySelector('#container1');
+		var count = 0;
+		var index = 0;
+
+		for(var i = 0; i < 9; i++){
+			var oImg = new Image();
+			oImg.onload = function(){
+				count++;
+				if(count == 9){
+					var aImg = oContainer1.querySelectorAll('img');
+					for(var i = 0;i < 9; i++){
+						(function(idx){//闭包  内部函数调用外部函数的变量
+						setTimeout(function(){
+							aImg[idx].style.webkitTransform = 'rotateY('+ (9-idx) * 40 +'deg) translateZ(200px)';
+					
+						},(9 - idx)*100);
+						})(i)
+					}
+					
+				}
+			};
+			oImg.src = 'img/qx'+ (i + 1) +'.jpg';
+			oContainer1.appendChild(oImg);
+		}
+
+		oContainer1.addEventListener('click' , function(){
+			index++;
+			oContainer1.style.transform = 'rotateY('+ index*40 +'deg)'
+		});
+	</script>
 
 =======
 >>>>>>> origin/master
