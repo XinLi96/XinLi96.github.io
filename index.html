@@ -143,12 +143,13 @@
 			height: 125px;
 			/*background-color: #f00;*/
 			background-repeat: no-repeat;
-			margin: 200px auto;
+			margin: 0 auto;
+			/*margin-top: 100px;*/
 			-webkit-transform-style: preserve-3d;
 			-webkit-transition: all 0.5s linear;
 		}
 		#container1 img{
-			position: absolute;
+			/*position: absolute;*/
 			-webkit-transition: all 0.5s linear;
 		}
 		}
@@ -207,7 +208,7 @@
 					for(var i = 0;i < 9; i++){
 						(function(idx){//闭包  内部函数调用外部函数的变量
 						setTimeout(function(){
-							// aImg[idx].style.webkitTransform = 'rotateY('+ (9-idx) * 40 +'deg) translateZ(100px)';
+							aImg[idx].style.webkitTransform = 'rotateY('+ 10 +'deg)';
 					
 						},(9 - idx)*100);
 						})(i)
