@@ -1,195 +1,122 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>栗鑫</title>
-	<link href="bootstrap.min.css" rel="stylesheet">
-	<style>
-		body{
-			background-color: #000;
-			-webkit-perspective: 800px;
-			-webkit-perspective-origin: 60% -20%;
-			background-image: url(james.jpg);
-			background-repeat: no-repeat;
-		}
-		#nav{
-			color: white;
-			margin-left: 50px;
-		}
-		#nav li{
-			list-style: none;
-			font-size: 30px;
-			margin-right: 50px;
-			float: left;
-			cursor: pointer;
-		}
-		#nav li:hover{
-			color: gray;
-		}
-		#container{
-			width: 200px;
-			height: 200px;
-			margin: 200px auto;
-			-webkit-transform-style: preserve-3d;
-			-webkit-animation: rol 3s linear infinite;
-		}
-		@-webkit-keyframes rol{
-			from{
-
-			}
-			to{
-				-webkit-transform: rotateY(-360deg);
-			}
-		}
-		.square{
-			width: 200px;
-			height: 200px;
-			opacity: .6;
-			/*background-color: rgba(255, 255, 255, .6);*/
-			border: 1px solid #fff;
-			position: absolute;
-			font-size: 60px;
-			text-align: center;
-			line-height: 200px;
-			border-radius: 10px;
-			color: white;
-		}
-		.one{
-			-webkit-transform: rotateY(180deg) translateZ(100px);
-			background-image: url(james1.png);
-		}
-		.two{
-			-webkit-transform: rotateY(-90deg) translateZ(100px);
-			background-image: url(james2.png);
-		}
-		.three{
-			-webkit-transform: rotateY(90deg) translateZ(100px);
-			background-image: url(james3.png);
-		}
-		.four{
-			-webkit-transform: rotateX(90deg) translateZ(100px);
-			background-image: url(james4.png);
-		}
-		.five{
-			-webkit-transform: rotateX(-90deg) translateZ(100px);
-			background-image: url(james5.png);
-		}
-		.six{
-			-webkit-transform: translateZ(100px);
-			background-image: url(james6.png);s
-		}
-		#person{
-			color: white;
-			width: 28%;
-			height: 500px;
-			border: 2px dashed white;
-			margin-left: 2%;
-			margin-right: 2%;
-			float: left;
-		}
-		#per-img{
-			background-image: url('img/IMG.png');
-			background-repeat: no-repeat;
-			width: 200px;
-			height: 267px;
-			margin: 0 auto;
-		}
-		#life{
-			color: white;
-			width: 28%;
-			height: 500px;
-			border: 2px dashed white;
-			margin-left: 50px;
-			margin-right: 30px;
-			float: left;
-		}
-		#life-img{
-			background-image: url('img/IMG1.png');
-			background-repeat: no-repeat;
-			width: 200px;
-			height: 267px;
-			margin: 0 auto;
-		}
-		#basket{
-			color: white;
-			width: 28%;
-			height: 500px;
-			border: 2px dashed white;
-			margin-left: 2%;
-			float: left;
-		}
-		#bask-img{
-			background-image: url('img/IMG2.png');
-			background-repeat: no-repeat;
-			width: 200px;
-			height: 267px;
-			margin: 0 auto;
-		}
-		@media screen and (max-width: 1000px){
-			#person, #life, #basket{
-				width: 100%;
-				margin-left: 0;
-				margin-left: 0;
-				margin-top: 10px;
-			}
-			#menu{
-			width: 100%;
-			}
-		}
-		#menu{
-			width: 1000px;
-			height: 450px;
-			margin: 50% auto;
-			clear: both;
-		}
-	</style>
+    <title>追梦 Love XXX zmrbk.com</title>
+	<meta name="keywords" content="表白网页在线制作,在线制作表白网站,表白网页,生日表白网站,阿狸表白网页,我要表白网,免费制作,表白网页生成器,2015,样式最多,情人节告白,520,七
+夕表白,怎么表白" />
+<meta name="description" content="追梦人博客 www.zmrbk.com，追梦表白网 love.90r.org 免费的表白网页一键式生成系统，精美简约的表白模版，可自定义加入图片音乐文字等内容。永久保存您的表白信息，记录您和TA的故事" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+        @font-face {
+            font-family: digit;
+            src: url('digital-7_mono.ttf') format("truetype");
+        }
+    </style>
+	<link rel="shortcut icon" href="http://love.90r.org/index/images/favicon.ico">
+    <link href="style/default.css" type="text/css" rel="stylesheet">
 </head>
-<body>
-	<div id="nav">
-		<ul>
-			<li>首页</li>
-			<li>前端笔记</li>
-			<li>NBA聚集地</li>
-			<li>心理交流站</li>
-			<li>关于</li>
-		</ul>
-	</div>
-	<div id="container">
-		<div class='square one'>L</div>
-		<div class='square two'>B</div>
-		<div class='square three'>!</div>
-		<div class='square four'>23</div>
-		<div class='square five'>23</div>
-		<div class='square six'>J</div> 
-	</div>
-	<div id="person">
-		<div id="per-img"></div>
 
-			<h2>个人简介</h2>
-			<p>  栗鑫，中共预备党员，96年生人，出生在黑龙江省佳木斯市，目前就读于黑龙江大学计算机科学技术学院物联网工程专业，现任14级物联网一班班长、院学生会生活部部长、黑大箐马工程二期学员、大学生创业创新实验室成员，在校期间曾获“校三等奖学金”、“优秀学生干部”、“优秀特困大学生”、“校ACM大赛一等奖”。</p>
-	</div>
-	<div id="life">
-		<div id="life-img">
-		</div>
-		<h2>生活感悟</h2>
-		<p>  人的一生就像一条长河，停滞不前的唯一结果是被庸长的的生活暗浪淹没，只有不断的否定过去，才能面对新的挑战，而每一次的选择与放弃是为了实现梦想，也是为了得到更多的喝彩。</p>		
-	</div>
-	<div id="basket">
-		<div id="bask-img"></div>
-		<h2>关于篮球</h2>
-		<p>  从开始接触篮球到看NBA就喜欢上了詹姆斯，他身上那种不凡的霸气、无私、勇敢，都一直是我心中的榜样，直到2016年为家乡带来一个总冠军，全美的人民都为之折服，在我心中永远都是爱篮球、爱生活。</p>
-	</div>
-	<div id="menu">
-		<img src="img/qx1.png" alt="..." class="img-rounded">
-		<img src="img/qx2.png" alt="..." class="img-circle">
-		<img src="img/qx9.png" alt="..." class="img-thumbnail">
-		<img src="img/qx3.png" alt="..." class="img-rounded">
-		<img src="img/qx5.png" alt="..." class="img-circle">
-		<img src="img/qx6.png" alt="..." class="img-thumbnail">
-	</div>
+<body background="#ee9ca">
+    <script type="text/javascript" src="style/jquery.js"></script>
+    <script type="text/javascript" src="style/garden.js"></script>
+    <script type="text/javascript" src="style/functions.js"></script>
+<!--       <embed width="0" height="0" src="http://www.zqzone.cn/show/mp3/swf/zQzone_cn279.swf?song=%D2%B9%BF%D5&autoStart=yes&repeatPlay=yes&mp3=
+http://www.51mp3ring.com/51mp3ring_com2/at201072281928.mp3&.swf" autostart="true" loop="5">  -->
+    <div id="mainDiv" style="background: #ee9ca7;position: absolute;top: 0px;left: 0px;right: 0px;">
+        <div id="content">
+            <div id="code">
+                <!-- <span class="comments">/**</span><br />
+                <span class="space"/><span class="comments">* 生日快乐，,</span><br />
+                <span class="space"/><span class="comments">* Happy birthDay.</span><br /> -->
+                <!-- <span class="space"/><span class="comments">*/</span><br /> -->
+                <span class="keyword" style="font-size: 70px;font-family: digit;"><i>生日快乐</i></span> <br /><br /><br /><br />
+                 <span class="keyword"style="font-size: 40px;font-family: digit;">HappyBirthday<br />
+                 <!-- <span class="comments">// On October 15, 2013, I told you I love you.. </span><br />
+                i.love(u);<br />
+                <span class="comments">// 但是,我不知道你对我感觉如何
+                ?</span><br />
+                u.sayOtherthing();<br />
+                <span class="comments">// 你是否对我这个突然间冒出来的人有好感呢?</span><br />
+                <span class="keyword">var</span> reason=i.ask(u);<br />
+                <span class="comments">// 我希望你能给我机会和时间让我们彼此了解 .</span><br />
+                $("body").append(reason);<br />
+                <span class="comments">// 别担心,我不是坏人!我要保护你.</span><br />
+                <span class="comments">// 愿上天能赐给我们缘分.</span><br />
+                i.takeCareOf(u);<br />
+                <span class="comments">// 我会一直等待,直到你冰封的心融化,因为我有信心..</span><br />
+                <span class="keyword">boolean</span> isAccept = <span class="keyword">false</span>;<br />
+                <span class="keyword">while</span> (isAccept) {<br />
+                <span class="placeholder"/>i.waitFor(u);<br />
+                <span class="placeholder"/><span class="comments">// 我认为这是一个重要的决定</span><br />
+                <span class="placeholder"/><span class="comments">// 让我帮助你释怀过去不开心的事情.</span><br />
+                <span class="placeholder"/>isAccept = u.thinkOver();<br />
+                }<br />
+                <span class="comments">// 然后开始我们的开始,和你幸福的生活.</span><br />
+                u.accept(i);<br />
+                i.liveHappilyWith(u);<br /> -->
 
+            </div>
+            <div id="loveHeart">
+
+                <canvas id="garden"></canvas>
+                <div id="words">
+                    <div id="messages">
+
+                        xxx, I have fallen in love with  you
+                      
+                    <div id="loveu">
+                        Love u forever and ever.<br/>
+                        <div class="signature">- 追梦</div>
+                    </div>
+                    </div>
+                </div>
+                <div class="mask" style="width: 70%;height: 100%;position: absolute;top: 0px;left: 40%;">
+                    <iframe src="test.html" frameborder="0" style="width: 100%;height: 100%;"></iframe>
+                </div>
+        </div>
+        <!-- <div id="copyright">
+            如果你愿让我充当你的避风港,就点这里大声对他说出你的心声 <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=499502371&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:499502371:52" alt="大声的对我说,我愿意和你一起面对未来" title="大声的对我说,我愿意和你一起面对未来"/></a><br>
+                    Copyright &copy;2014-2015 <a href="http://www.zmrbk.com" target="_blank">追梦人博客</a>    <a href="http://love.90r.org" target="_blank">“追梦表白网”</a></span>-<script src="http://s5.cnzz.com/stat.php?id=3909316&web_id=3909316" language="JavaScript"></script>
+        </div> -->
+    </div>
+	<script> 
+function stop(){ 
+alert('宝贝，我爱你!    by  追梦-Zmrbk.Com');
+return false; 
+} 
+document.oncontextmenu=stop; 
+</script>
+    <script type="text/javascript">
+        var offsetX = $("#loveHeart").width() / 2;
+        var offsetY = $("#loveHeart").height() / 2 - 55;
+        
+        if (!document.createElement('canvas').getContext) {
+            var msg = document.createElement("div");
+            msg.id = "errorMsg";
+            msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+            document.body.appendChild(msg);
+            $("#code").css("display", "none")
+            $("#copyright").css("position", "absolute");
+            $("#copyright").css("bottom", "10px");
+            document.execCommand("stop");
+        } else {
+            setTimeout(function () {
+                adjustWordsPosition();
+                startHeartAnimation();
+            }, 10000);
+            
+            $("#accept").click(function(){
+                $(this).hide();
+                $("#elapseClock").show();
+                var together = new Date();
+                timeElapse(together);
+                setInterval(function () {
+                    timeElapse(together);
+                }, 500);
+            })
+            adjustCodePosition();
+            $("#code").typewriter();
+        }
+    </script>
 </body>
-<script src="jquery-1.12.4.min.js"></script>
-<script src="bootstrap.min.js"></script>
-
 </html>
