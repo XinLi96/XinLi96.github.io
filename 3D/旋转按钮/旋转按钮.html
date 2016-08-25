@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#container{
+			position: absolute;
+			right: 200px;
+			bottom: 200px;
+		}
+		#home{
+			position: absolute;
+			width: 50px;
+			height: 50px;
+			-webkit-transition: all .5s linear;
+			-moz-transition: all .5s linear;
+			-ms-transition: all .5s linear;
+			-o-transition: all .5s linear;
+			transition: all .5s linear;
+		}
+		#menu{
+			height: 49px;
+			width: 49px;
+			position: absolute;
+		}
+		img{
+			position: absolute;
+			width: 49px;
+			height: 49px;
+			-webkit-transition: all .5s linear;
+			-moz-transition: all .5s linear;
+			-ms-transition: all .5s linear;
+			-o-transition: all .5s linear;
+			transition: all .5s linear;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="menu">
+			<img src="img/close.png">
+			<img src="img/full.png">
+			<img src="img/open.png">
+			<img src="img/prev.png">
+			<img src="img/refresh.png">
+		</div>
+		<div id="home">
+			<img src="img/home.png">
+		</div>
+	</div>
+
+	<script>
+		var oContainer = document.querySelector('container');
+		var oHome = document.querySelector('#home');
+		var oMenu = document.querySelector('#menu');
+		var aImg = oMenu.querySelectorAll('img');
+		var bClick = false;
+		var currentStyle = '';
+
+		oHome.addEventListener('click', function(){
+			if(bClick){
+				setStyle(oHome, 'transform', 'rotate(0deg)');
+				for(var i = 0; i < 5; i++){
+					setStyle(aImg[i], 'transitionDelay', ''+(5-i) * 0.1+'s');
+					setStyle(aImg[i], 'transform', 'translate(-'+ 0 +'px,-'+ 0 +'px) ' + 'rotate(0deg) scale(1)');
+				}
+			}else{
+				setStyle(oHome, 'transform', 'rotate(-360deg)');
+				for(var i = 0; i < 5; i++){
+					setStyle(aImg[i], 'transitionDelay', ''+i * 0.1+'s');
+					setStyle(aImg[i], 'transform', 'translate(-'+ Math.sin(i * 22.5 * Math.PI/180) * 150 +'px,-'+ Math.cos(i * 22.5 * Math.PI/180) * 150 +'px)' + 'rotate(-360deg) scale(1)');
+				}
+			}
+			bClick = !bClick;
+		});
+
+		for(var i = 0; i < 5; i++){
+			aImg[i].addEventListener('click', big, false);
+		}
+		function big(){
+				currentStyle = this.style.transform;
+				setStyle(this, 'transform', currentStyle + 'scale(2)');
+				this.addEventListener('webkitTransitionEnd', fn, false);
+		}
+		function fn(){
+			setStyle(this, 'transform', currentStyle);
+			this.removeEventListener('webkitTransitionEnd', fn);
+		}
+
+		var setStyle = function(elem, prop, val){
+			['Webkit','Moz','Ms','O',''].forEach(function(perfix){
+				elem.style[perfix + prop.charAt(0).toUpperCase() + prop.substring(1)] = val;
+			})
+		};
+	</script>
+</body>
+</html>
