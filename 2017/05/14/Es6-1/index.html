@@ -29,7 +29,7 @@
 
 
 
-  <meta name="keywords" content="js," />
+  <meta name="keywords" content="Es6," />
 
 
 
@@ -38,22 +38,24 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="var k;for(var i=0,j=0;i&amp;lt;10,j&amp;lt;6;i++,j++){  k = i + j;}console.log(k);以上代码输出结果为：10; var k;for(var i=0,j=0;i&amp;lt;6,j&amp;lt;10;i++,j++){  k = i + j;}console.log(k);上面代码输出结果为：18;当for循环判断条件为多个时，会以判断条件的最后一">
-<meta name="keywords" content="js">
+<meta name="description" content="箭头操作符 类的定义,继承 字符串模板 解构var [x,y]=getVal(),//函数返回值的解构    [name,,age]=[‘wayou’,’male’,’secrect’];//数组解构 function getVal() {    return [ 1, 2 ];}console.log(‘x:’+x+’, y:’+y);//输出：x:1, y:2console.log(‘name">
+<meta name="keywords" content="Es6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端算法（一）">
-<meta property="og:url" content="http://yoursite.com/2017/05/13/前端算法（一）/index.html">
+<meta property="og:title" content="Es6_1">
+<meta property="og:url" content="http://yoursite.com/2017/05/14/Es6-1/index.html">
 <meta property="og:site_name" content="栗鑫的个人博客">
-<meta property="og:description" content="var k;for(var i=0,j=0;i&amp;lt;10,j&amp;lt;6;i++,j++){  k = i + j;}console.log(k);以上代码输出结果为：10; var k;for(var i=0,j=0;i&amp;lt;6,j&amp;lt;10;i++,j++){  k = i + j;}console.log(k);上面代码输出结果为：18;当for循环判断条件为多个时，会以判断条件的最后一">
-<meta property="og:image" content="http://opxc9xs69.bkt.clouddn.com/122.png">
-<meta property="og:image" content="http://opxc9xs69.bkt.clouddn.com/1.jpg">
-<meta property="og:image" content="http://opxc9xs69.bkt.clouddn.com/2.jpg">
-<meta property="og:image" content="http://opxc9xs69.bkt.clouddn.com/3.jpg">
-<meta property="og:updated_time" content="2017-05-14T04:24:56.528Z">
+<meta property="og:description" content="箭头操作符 类的定义,继承 字符串模板 解构var [x,y]=getVal(),//函数返回值的解构    [name,,age]=[‘wayou’,’male’,’secrect’];//数组解构 function getVal() {    return [ 1, 2 ];}console.log(‘x:’+x+’, y:’+y);//输出：x:1, y:2console.log(‘name">
+<meta property="og:image" content="http://opxc9xs69.bkt.clouddn.com/7.jpg">
+<meta property="og:image" content="http://opxc9xs69.bkt.clouddn.com/8.jpg">
+<meta property="og:image" content="http://opxc9xs69.bkt.clouddn.com/9.jpg">
+<meta property="og:image" content="http://opxc9xs69.bkt.clouddn.com/10.jpg">
+<meta property="og:image" content="http://opxc9xs69.bkt.clouddn.com/11.jpg">
+<meta property="og:image" content="http://opxc9xs69.bkt.clouddn.com/12.jpg">
+<meta property="og:updated_time" content="2017-05-14T09:43:48.941Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端算法（一）">
-<meta name="twitter:description" content="var k;for(var i=0,j=0;i&amp;lt;10,j&amp;lt;6;i++,j++){  k = i + j;}console.log(k);以上代码输出结果为：10; var k;for(var i=0,j=0;i&amp;lt;6,j&amp;lt;10;i++,j++){  k = i + j;}console.log(k);上面代码输出结果为：18;当for循环判断条件为多个时，会以判断条件的最后一">
-<meta name="twitter:image" content="http://opxc9xs69.bkt.clouddn.com/122.png">
+<meta name="twitter:title" content="Es6_1">
+<meta name="twitter:description" content="箭头操作符 类的定义,继承 字符串模板 解构var [x,y]=getVal(),//函数返回值的解构    [name,,age]=[‘wayou’,’male’,’secrect’];//数组解构 function getVal() {    return [ 1, 2 ];}console.log(‘x:’+x+’, y:’+y);//输出：x:1, y:2console.log(‘name">
+<meta name="twitter:image" content="http://opxc9xs69.bkt.clouddn.com/7.jpg">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -63,7 +65,7 @@
   };
 </script>
 
-  <title> 前端算法（一） | 栗鑫的个人博客 </title>
+  <title> Es6_1 | 栗鑫的个人博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -313,7 +315,7 @@
           
           
             
-              前端算法（一）
+              Es6_1
             
           
         </h1>
@@ -322,8 +324,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2017-05-13T22:47:24+08:00" content="2017-05-13">
-            2017-05-13
+          <time itemprop="dateCreated" datetime="2017-05-14T17:31:00+08:00" content="2017-05-14">
+            2017-05-14
           </time>
         </span>
 
@@ -341,12 +343,16 @@
       
 
       
-        <span itemprop="articleBody"><p>var k;<br>for(var i=0,j=0;i&lt;10,j&lt;6;i++,j++)<br>{<br>  k = i + j;<br>}<br>console.log(k);<br>以上代码输出结果为：10;</p>
-<p>var k;<br>for(var i=0,j=0;i&lt;6,j&lt;10;i++,j++)<br>{<br>  k = i + j;<br>}<br>console.log(k);<br>上面代码输出结果为：18;<br>当for循环判断条件为多个时，会以判断条件的最后一个作为真正的判断,所以会是输出不同的结果。</p>
-<p><img src="http://opxc9xs69.bkt.clouddn.com/122.png" alt="“函数返回值”"><br>上面代码会输出:undefined,undefined;<br>因为add函数的返回值没有指定,所以会返回一个undefined</p>
-<p>如何在一个没有重复元素的数组中的指定元素后插入一个元素<br><img src="http://opxc9xs69.bkt.clouddn.com/1.jpg" alt="“插入元素”"><br>实现思路:先利用for循环遍历整个数组进行查找，在记录下标位置，再利用splice函数进行插入。</p>
-<p><img src="http://opxc9xs69.bkt.clouddn.com/2.jpg" alt="“输出”"></p>
-<p>不借助临时变量，进行两个整数的交换<br><img src="http://opxc9xs69.bkt.clouddn.com/3.jpg" alt="“”"><br>先做差，在进行加减法</p>
+        <span itemprop="articleBody"><p>箭头操作符<br><img src="http://opxc9xs69.bkt.clouddn.com/7.jpg" alt="“”"></p>
+<p>类的定义,继承<br><img src="http://opxc9xs69.bkt.clouddn.com/8.jpg" alt="“”"></p>
+<p>字符串模板<br><img src="http://opxc9xs69.bkt.clouddn.com/9.jpg" alt="“”"></p>
+<p>解构<br>var [x,y]=getVal(),//函数返回值的解构<br>    [name,,age]=[‘wayou’,’male’,’secrect’];//数组解构</p>
+<p>function getVal() {<br>    return [ 1, 2 ];<br>}<br>console.log(‘x:’+x+’, y:’+y);//输出：x:1, y:2<br>console.log(‘name:’+name+’, age:’+age);//输出： name:wayou, age:secrect</p>
+<p>参数默认值，不定参数，拓展参数<br><img src="http://opxc9xs69.bkt.clouddn.com/10.jpg" alt="“”"></p>
+<p>let与const 关键字:可以把let看成var，只是它定义的变量被限定在了特定范围内才能使用，而离开这个范围则无效。const则很直观，用来定义常量，即无法被更改值的变量</p>
+<p>for of 值遍历<br><img src="http://opxc9xs69.bkt.clouddn.com/11.jpg" alt="“”"></p>
+<p>模块：在ES6标准中，JavaScript原生支持module了。这种将JS代码分割成不同功能的小块进行模块化的概念是在一些三方规范中流行起来的，比如CommonJS和AMD模式。 将不同功能的代码分别写在不同文件中，各模块只需导出公共接口部分，然后通过模块的导入的方式可以在其他地方使用。</p>
+<p>Map，Set 和 WeakMap，WeakSet<br><img src="http://opxc9xs69.bkt.clouddn.com/12.jpg" alt="“”"></p>
 </span>
       
     </div>
@@ -355,7 +361,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/js/" rel="tag">#js</a>
+            <a href="/tags/Es6/" rel="tag">#Es6</a>
           
         </div>
       
@@ -364,13 +370,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/14/整理二/" rel="prev">整理二</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/13/整理一/" rel="next">整理一</a>
+              <a href="/2017/05/14/http整理/" rel="next">http整理</a>
             
           </div>
         </div>
