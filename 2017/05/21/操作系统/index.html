@@ -1,0 +1,1036 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="学习总结 知识管理" />
+
+
+
+  <meta name="keywords" content="操作系统," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="1、什么是进程（Process）和线程（Thread）？有何区别？ 　　进程是具有一定独立功能的程序关于某个数据集合上的一次运行活动，进程是系统进行资源分配和调度的一个独立单位。线程是进程的一个实体，是CPU调度和分派的基本单位，它是比进程更小的能独立运行的基本单位。线程自己基本上不拥有系统资源，只拥有一点在运行中必不可少的资源（如程序计数器，一组寄存器和栈），但是它可与同属一个进程的其他的线程">
+<meta name="keywords" content="操作系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统">
+<meta property="og:url" content="http://yoursite.com/2017/05/21/操作系统/index.html">
+<meta property="og:site_name" content="栗鑫的个人博客">
+<meta property="og:description" content="1、什么是进程（Process）和线程（Thread）？有何区别？ 　　进程是具有一定独立功能的程序关于某个数据集合上的一次运行活动，进程是系统进行资源分配和调度的一个独立单位。线程是进程的一个实体，是CPU调度和分派的基本单位，它是比进程更小的能独立运行的基本单位。线程自己基本上不拥有系统资源，只拥有一点在运行中必不可少的资源（如程序计数器，一组寄存器和栈），但是它可与同属一个进程的其他的线程">
+<meta property="og:updated_time" content="2017-05-21T14:35:08.952Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="操作系统">
+<meta name="twitter:description" content="1、什么是进程（Process）和线程（Thread）？有何区别？ 　　进程是具有一定独立功能的程序关于某个数据集合上的一次运行活动，进程是系统进行资源分配和调度的一个独立单位。线程是进程的一个实体，是CPU调度和分派的基本单位，它是比进程更小的能独立运行的基本单位。线程自己基本上不拥有系统资源，只拥有一点在运行中必不可少的资源（如程序计数器，一组寄存器和栈），但是它可与同属一个进程的其他的线程">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> 操作系统 | 栗鑫的个人博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">善恶终有时</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              操作系统
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2017-05-21T20:51:43+08:00" content="2017-05-21">
+            2017-05-21
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p> 1、什么是进程（Process）和线程（Thread）？有何区别？</p>
+<p>　　进程是具有一定独立功能的程序关于某个数据集合上的一次运行活动，进程是系统进行资源分配和调度的一个独立单位。线程是进程的一个实体，是CPU调度和分派的基本单位，它是比进程更小的能独立运行的基本单位。线程自己基本上不拥有系统资源，只拥有一点在运行中必不可少的资源（如程序计数器，一组寄存器和栈），但是它可与同属一个进程的其他的线程共享进程所拥有的全部资源。一个线程可以创建和撤销另一个线程，同一个进程中的多个线程之间可以并发执行。</p>
+<p>　　进程与应用程序的区别在于应用程序作为一个静态文件存储在计算机系统的硬盘等存储空间中，而进程则是处于动态条件下由操作系统维护的系统资源管理实体。</p>
+<p>2、Windows下的内存是如何管理的？</p>
+<p>　　Windows提供了3种方法来进行内存管理：虚拟内存，最适合用来管理大型对象或者结构数组；内存映射文件，最适合用来管理大型数据流（通常来自文件）以及在单个计算机上运行多个进程之间共享数据；内存堆栈，最适合用来管理大量的小对象。</p>
+<p>　　Windows操纵内存可以分两个层面：物理内存和虚拟内存。</p>
+<p>　　其中物理内存由系统管理，不允许应用程序直接访问，应用程序可见的只有一个2G地址空间，而内存分配是通过堆进行的。对于每个进程都有自己的默认堆，当一个堆创建后，就通过虚拟内存操作保留了相应大小的地址块（不占有实际的内存，系统消耗很小）。当在堆上分配一块内存时，系统在堆的地址表里找到一个空闲块（如果找不到，且堆创建属性是可扩充的，则扩充堆大小），为这个空闲块所包含的所有内存页提交物理对象（在物理内存上或硬盘的交换文件上），这时就可以访问这部分地址。提交时，系统将对所有进程的内存统一调配，如果物理内存不够，系统试图把一部分进程暂时不访问的页放入交换文件，以腾出部分物理内存。释放内存时，只在堆中将所在的页解除提交（相应的物理对象被解除），继续保留地址空间。</p>
+<p>　　如果要知道某个地址是否被占用/可不可以访问，只要查询此地址的虚拟内存状态即可。如果是提交，则可以访问。如果仅仅保留，或没保留，则产生一个软件异常。此外，有些内存页可以设置各种属性。如果是只读，向内存写也会产生软件异常。</p>
+<p>　　3、Windows消息调度机制是？</p>
+<p>　　A）指令队列；B）指令堆栈；C）消息队列；D）消息堆栈</p>
+<p>　　答案：C</p>
+<p>　　处理消息队列的顺序。首先Windows绝对不是按队列先进先出的次序来处理的，而是有一定优先级的。优先级通过消息队列的状态标志来实现的。首先，最高优先级的是别的线程发过来的消息（通过sendmessage）；其次，处理登记消息队列消息；再次处理QS_QUIT标志，处理虚拟输入队列，处理wm_paint；最后是wm_timer。</p>
+<p>　　4、描述实时系统的基本特性</p>
+<p>　　在特定时间内完成特定的任务，实时性与可靠性。</p>
+<p>　　所谓“实时操作系统”，实际上是指操作系统工作时，其各种资源可以根据需要随时进行动态分配。由于各种资源可以进行动态分配，因此，其处理事务的能力较强、速度较快。</p>
+<p>　　5、中断和轮询的特点</p>
+<p>　　对I/O设备的程序轮询的方式，是早期的计算机系统对I/O设备的一种管理方式。它定时对各种设备轮流询问一遍有无处理要求。轮流询问之后，有要求的，则加以处理。在处理I/O设备的要求之后，处理机返回继续工作。尽管轮询需要时间，但轮询要比I/O设备的速度要快得多，所以一般不会发生不能及时处理的问题。当然，再快的处理机，能处理的输入输出设备的数量也是有一定限度的。而且，程序轮询毕竟占据了CPU相当一部分处理时间，因此，程序轮询是一种效率较低的方式，在现代计算机系统中已很少应用。</p>
+<p>　　程序中断通常简称中断，是指CPU在正常运行程序的过程中，由于预先安排或发生了各种随机的内部或外部事件，使CPU中断正在运行的程序，而转到为响应的服务程序去处理。</p>
+<p>　　轮询——效率低，等待时间很长，CPU利用率不高。</p>
+<p>　　中断——容易遗漏一些问题，CPU利用率高。</p>
+<p>6、什么是临界区？如何解决冲突？</p>
+<p>　　每个进程中访问临界资源的那段程序称为临界区，每次只准许一个进程进入临界区，进入后不允许其他进程进入。</p>
+<p>　　（1）如果有若干进程要求进入空闲的临界区，一次仅允许一个进程进入；</p>
+<p>　　（2）任何时候，处于临界区内的进程不可多于一个。如已有进程进入自己的临界区，则其它所有试图进入临界区的进程必须等待；</p>
+<p>　　（3）进入临界区的进程要在有限时间内退出，以便其它进程能及时进入自己的临界区；</p>
+<p>　　（4）如果进程不能进入自己的临界区，则应让出CPU，避免进程出现“忙等”现象。</p>
+<p>　　7、说说分段和分页</p>
+<p>　　页是信息的物理单位，分页是为实现离散分配方式，以消减内存的外零头，提高内存的利用率；或者说，分页仅仅是由于系统管理的需要，而不是用户的需要。</p>
+<p>　　段是信息的逻辑单位，它含有一组其意义相对完整的信息。分段的目的是为了能更好的满足用户的需要。</p>
+<p>　　页的大小固定且由系统确定，把逻辑地址划分为页号和页内地址两部分，是由机器硬件实现的，因而一个系统只能有一种大小的页面。段的长度却不固定，决定于用户所编写的程序，通常由编辑程序在对源程序进行编辑时，根据信息的性质来划分。</p>
+<p>　　分页的作业地址空间是一维的，即单一的线性空间，程序员只须利用一个记忆符，即可表示一地址。分段的作业地址空间是二维的，程序员在标识一个地址时，既需给出段名，又需给出段内地址。</p>
+<p>　　8、说出你所知道的保持进程同步的方法？</p>
+<p>　　进程间同步的主要方法有原子操作、信号量机制、自旋锁、管程、会合、分布式系统等。</p>
+<p>　　9、Linux中常用到的命令</p>
+<p>　　显示文件目录命令ls        如ls</p>
+<p>　　改变当前目录命令cd        如cd /home</p>
+<p>　　建立子目录mkdir           如mkdir xiong</p>
+<p>　　删除子目录命令rmdir       如rmdir /mnt/cdrom</p>
+<p>　　删除文件命令rm            如rm /ucdos.bat</p>
+<p>　　文件复制命令cp            如cp /ucdos /fox</p>
+<p>　　获取帮助信息命令man      如man ls</p>
+<p>　　显示文件的内容less        如less mwm.lx</p>
+<p>　　重定向与管道type          如type readme&gt;&gt;direct，将文件readme的内容追加到文direct中</p>
+<p>10、Linux文件属性有哪些？（共十位）</p>
+<p>　　-rw-r–r–那个是权限符号，总共是- — — —这几个位。</p>
+<p>　　第一个短横处是文件类型识别符：-表示普通文件；c表示字符设备（character）；b表示块设备（block）；d表示目录（directory）；l表示链接文件（link）；后面第一个三个连续的短横是用户权限位（User），第二个三个连续短横是组权限位（Group），第三个三个连续短横是其他权限位（Other）。每个权限位有三个权限，r（读权限），w（写权限），x（执行权限）。如果每个权限位都有权限存在，那么满权限的情况就是：-rwxrwxrwx；权限为空的情况就是- — — —。</p>
+<p>　　权限的设定可以用chmod命令，其格式位：chmod ugoa+/-/=rwx filename/directory。例如：</p>
+<p>　　一个文件aaa具有完全空的权限- — — —。</p>
+<p>　　chmod u+rw aaa（给用户权限位设置读写权限，其权限表示为：- rw- — —）</p>
+<p>　　chmod g+r aaa（给组设置权限为可读，其权限表示为：- — r– —）</p>
+<p>　　chmod ugo+rw aaa（给用户，组，其它用户或组设置权限为读写，权限表示为：- rw- rw- rw-）</p>
+<p>　　如果aaa具有满权限- rwx rwx rwx。</p>
+<p>　　chmod u-x aaa（去掉用户可执行权限，权限表示为：- rw- rwx rwx）</p>
+<p>　　如果要给aaa赋予制定权限- rwx r-x r-x，命令为：</p>
+<p>　　chmod u=rwx，Go=rx aaa</p>
+<p>　　11、makefile文件的作用是什么？</p>
+<p>　　一个工程中的源文件不计其数，其按类型、功能、模块分别放在若干个目录中。makefile定义了一系列的规则来指定哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，甚至于进行更复杂的功能操作。因为makefile就像一个Shell脚本一样，其中也可以执行操作系统的命令。makefile带来的好处就是——“自动化编译”。一旦写好，只需要一个make命令，整个工程完全自动编译，极大地提高了软件开发的效率。make是一个命令工具，是一个解释makefile中指令的命令工具。一般来说，大多数的IDE都有这个命令，比如：Delphi的make，Visual C++的nmake，Linux下GNU的make。可见，makefile都成为了一种在工程方面的编译方法。</p>
+<p>　　12、简术OSI的物理层Layer1，链路层Layer2，网络层Layer3的任务。</p>
+<p>　　网络层：通过路由选择算法，为报文或分组通过通信子网选择最适当的路径。</p>
+<p>　　链路层：通过各种控制协议，将有差错的物理信道变为无差错的、能可靠传输数据帧的数据链路。</p>
+<p>　　物理层：利用传输介质为数据链路层提供物理连接，实现比特流的透明传输。</p>
+<p>　　13、什么是中断？中断时CPU做什么工作？</p>
+<p>　　中断是指在计算机执行期间，系统内发生任何非寻常的或非预期的急需处理事件，使得CPU暂时中断当前正在执行的程序而转去执行相应的事件处理程序。待处理完毕后又返回原来被中断处继续执行或调度新的进程执行的过程。</p>
+<p>　　14、你知道操作系统的内容分为几块吗？什么叫做虚拟内存？他和主存的关系如何？内存管理属于操作系统的内容吗？</p>
+<p>　　操作系统的主要组成部分：进程和线程的管理，存储管理，设备管理，文件管理。虚拟内存是一些系统页文件，存放在磁盘上，每个系统页文件大小为4K，物理内存也被分页，每个页大小也为4K，这样虚拟页文件和物理内存页就可以对应，实际上虚拟内存就是用于物理内存的临时存放的磁盘空间。页文件就是内存页，物理内存中每页叫物理页，磁盘上的页文件叫虚拟页，物理页+虚拟页就是系统所有使用的页文件的总和。</p>
+<p>15、线程是否具有相同的堆栈？dll是否有独立的堆栈？</p>
+<p>　　每个线程有自己的堆栈。</p>
+<p>　　dll是否有独立的堆栈？这个问题不好回答，或者说这个问题本身是否有问题。因为dll中的代码是被某些线程所执行，只有线程拥有堆栈。如果dll中的代码是exe中的线程所调用，那么这个时候是不是说这个dll没有独立的堆栈？如果dll中的代码是由dll自己创建的线程所执行，那么是不是说dll有独立的堆栈？</p>
+<p>　　以上讲的是堆栈，如果对于堆来说，每个dll有自己的堆，所以如果是从dll中动态分配的内存，最好是从dll中删除；如果你从dll中分配内存，然后在exe中，或者另外一个dll中删除，很有可能导致程序崩溃。</p>
+<p>　　16、什么是缓冲区溢出？有什么危害？其原因是什么？</p>
+<p>　　缓冲区溢出是指当计算机向缓冲区内填充数据时超过了缓冲区本身的容量，溢出的数据覆盖在合法数据上。</p>
+<p>　　危害：在当前网络与分布式系统安全中，被广泛利用的50%以上都是缓冲区溢出，其中最著名的例子是1988年利用fingerd漏洞的蠕虫。而缓冲区溢出中，最为危险的是堆栈溢出，因为入侵者可以利用堆栈溢出，在函数返回时改变返回程序的地址，让其跳转到任意地址，带来的危害一种是程序崩溃导致拒绝服务，另外一种就是跳转并且执行一段恶意代码，比如得到shell，然后为所欲为。通过往程序的缓冲区写超出其长度的内容，造成缓冲区的溢出，从而破坏程序的堆栈，使程序转而执行其它指令，以达到攻击的目的。</p>
+<p>　　造成缓冲区溢出的主原因是程序中没有仔细检查用户输入的参数。</p>
+<p>　　17、什么是死锁？其条件是什么？怎样避免死锁？</p>
+<p>　　死锁的概念：在两个或多个并发进程中，如果每个进程持有某种资源而又都等待别的进程释放它或它们现在保持着的资源，在未改变这种状态之前都不能向前推进，称这一组进程产生了死锁。通俗地讲，就是两个或多个进程被无限期地阻塞、相互等待的一种状态。</p>
+<p>　　死锁产生的原因主要是：？ 系统资源不足；？ 进程推进顺序非法。</p>
+<p>　　产生死锁的必要条件：</p>
+<p>　　（1）互斥（mutualexclusion），一个资源每次只能被一个进程使用；</p>
+<p>　　（2）不可抢占（nopreemption），进程已获得的资源，在未使用完之前，不能强行剥夺；</p>
+<p>　　（3）占有并等待（hold andwait），一个进程因请求资源而阻塞时，对已获得的资源保持不放；</p>
+<p>　　（4）环形等待（circularwait），若干进程之间形成一种首尾相接的循环等待资源关系。</p>
+<p>　　这四个条件是死锁的必要条件，只要系统发生死锁，这些条件必然成立，而只要上述条件之一不满足，就不会发生死锁。</p>
+<p>　　死锁的解除与预防：理解了死锁的原因，尤其是产生死锁的四个必要条件，就可以最大可能地避免、预防和解除死锁。所以，在系统设计、进程调度等方面注意如何不让这四个必要条件成立，如何确定资源的合理分配算法，避免进程永久占据系统资源。此外，也要防止进程在处于等待状态的情况下占用资源。因此，对资源的分配要给予合理的规划。</p>
+<p>　　死锁的处理策略：鸵鸟策略、预防策略、避免策略、检测与恢复策略。</p>
+<p>　1、程序和进程</p>
+<p>　　进程由两个部分组成：1）操作系统用来管理进程的内核对象。内核对象也是系统用来存放关于进程的统计信息的地方。2）地址空间。它包含所有可执行模块或DLL模块的代码和数据。它还包含动态内存分配的空间。如线程堆栈和堆分配空间。</p>
+<p>定义</p>
+<p>使用系统运行资源情况</p>
+<p>程序</p>
+<p>计算机指令的集合，它以文件的形式存储在磁盘上。程序是静态实体（passive Entity），在多道程序系统中，它是不能独立运行的，更不能与其他程序并发执行。</p>
+<p>不使用【程序不能申请系统资源，不能被系统调度，也不能作为独立运行的单位，因此，它不占用系统的运行资源】。</p>
+<p>进程</p>
+<p>通常被定义为一个正在运行的程序的实例，是一个程序在其自身的地址空间中的一次执行活动。</p>
+<p>定义：进程是进程实体（包括：程序段、相关的数据段、进程控制块PCB）的运行过程，是系统进行资源分配和调度的一个独立单位。</p>
+<p>使用【进程是资源申请、调度和独立运行的单位，因此，它使用系统中的运行资源。】</p>
+<p>　　2、进程与线程</p>
+<p>　　如果说操作系统引入进程的目的是为了提高程序并发执行，以提高资源利用率和系统吞吐量。那么操作系统中引入线程的目的，则是为了减少进程并发执行过程中所付出的时空开销，使操作系统能很好的并发执行。</p>
+<p>　　进程process定义了一个执行环境，包括它自己私有的地址空间、一个句柄表，以及一个安全环境；线程则是一个控制流，有他自己的调用栈call stack，记录了它的执行历史。</p>
+<p>　　线程由两个部分组成：1）线程的内核对象，操作系统用它来对线程实施管理。内核对象也是系统用来存放线程统计信息的地方。2）线程堆栈，它用于维护线程在执行代码时需要的所有参数和局部变量。当创建线程时，系统创建一个线程内核对象。该线程内核对象不是线程本身，而是操作系统用来管理线程的较小的数据结构。可以将线程内核对象视为由关于线程的统计信息组成的一个小型数据结构。</p>
+<p>　　进程与线程的比较如下：</p>
+<p>比较</p>
+<p>进程</p>
+<p>线程</p>
+<p>活泼性</p>
+<p>不活泼（只是线程的容器）</p>
+<p>活泼</p>
+<p>地址空间</p>
+<p>系统赋予的独立的虚拟地址空间（对于32位进程来说，这个地址空间是4GB）</p>
+<p>在进程的地址空间执行代码。线程只有一个内核对象和一个堆栈，保留的记录很少，因此所需要的内存也很少。因为线程需要的开销比进程少</p>
+<p>调度</p>
+<p>仅是资源分配的基本单位</p>
+<p>独立调度、分派的基本单位</p>
+<p>并发性</p>
+<p>仅进程间并发（传统OS）</p>
+<p>进程间、线程间并发</p>
+<p>拥有资源</p>
+<p>资源拥有的基本单位</p>
+<p>基本上不拥有资源</p>
+<p>系统开销</p>
+<p>创建、撤销、切换开销大</p>
+<p>仅保存少量寄存器内容，开销小。</p>
+<p>　　3、进程同步</p>
+<p>　　进程同步的主要任务：是对多个相关进程在执行次序上进行协调，以使并发执行的诸进程之间能有效地共享资源和相互合作，从而使程序的执行具有可再现性。</p>
+<p>　　同步机制遵循的原则：</p>
+<p>　　（1）空闲让进；</p>
+<p>　　（2）忙则等待（保证对临界区的互斥访问）；</p>
+<p>　　（3）有限等待（有限代表有限的时间，避免死等）；</p>
+<p>　　（4）让权等待，（当进程不能进入自己的临界区时，应该释放处理机，以免陷入忙等状态）。</p>
+<p>4、进程间的通信是如何实现的？</p>
+<p>　　进程通信，是指进程之间的信息交换（信息量少则一个状态或数值，多者则是成千上万个字节）。因此，对于用信号量进行的进程间的互斥和同步，由于其所交换的信息量少而被归结为低级通信。</p>
+<p>　　所谓高级进程通信指：用户可以利用操作系统所提供的一组通信命令传送大量数据的一种通信方式。操作系统隐藏了进程通信的实现细节。或者说，通信过程对用户是透明的。</p>
+<p>　　高级通信机制可归结为三大类：</p>
+<p>　　（1）共享存储器系统（存储器中划分的共享存储区）；实际操作中对应的是“剪贴板”（剪贴板实际上是系统维护管理的一块内存区域）的通信方式，比如举例如下：word进程按下ctrl+c，在ppt进程按下ctrl+v，即完成了word进程和ppt进程之间的通信，复制时将数据放入到剪贴板，粘贴时从剪贴板中取出数据，然后显示在ppt窗口上。</p>
+<p>　　（2）消息传递系统（进程间的数据交换以消息（message）为单位，当今最流行的微内核操作系统中，微内核与服务器之间的通信，无一例外地都采用了消息传递机制。应用举例：邮槽（MailSlot）是基于广播通信体系设计出来的，它采用无连接的不可靠的数据传输。邮槽是一种单向通信机制，创建邮槽的服务器进程读取数据，打开邮槽的客户机进程写入数据。</p>
+<p>　　（3）管道通信系统（管道即：连接读写进程以实现他们之间通信的共享文件（pipe文件，类似先进先出的队列，由一个进程写，另一进程读））。实际操作中，管道分为：匿名管道、命名管道。匿名管道是一个未命名的、单向管道，通过父进程和一个子进程之间传输数据。匿名管道只能实现本地机器上两个进程之间的通信，而不能实现跨网络的通信。命名管道不仅可以在本机上实现两个进程间的通信，还可以跨网络实现两个进程间的通信。</p>
+<p>同一机器两个进程间通信</p>
+<p>跨网络通信</p>
+<p>剪贴板Clipboard</p>
+<p>可以</p>
+<p>不可以</p>
+<p>匿名管道Pipe</p>
+<p>可以</p>
+<p>不可以</p>
+<p>命名管道（点对点单一通信，数据量可较大）Namedpipe</p>
+<p>可以</p>
+<p>可以</p>
+<p>邮槽（一对多，数据量较小，424字节以下）Mailslot</p>
+<p>可以</p>
+<p>可以</p>
+<p>　　5、线程同步</p>
+<p>　　根据用户模式及内核模式下的同步方式的不同，分类及对比如下：</p>
+<p>内核对象/</p>
+<p>非内核对象</p>
+<p>含义</p>
+<p>缺点</p>
+<p>适用</p>
+<p>关键代码段（临界区）CriticalSection</p>
+<p>非内核对象，工作在用户方式下，为用户模式对象</p>
+<p>从程序代码的角度来控制线程的并发性</p>
+<p>1.因为在等待进入关键代码段时无法设定超时值，所以其很容易进入死锁状态。2.不能跨进程使用。</p>
+<p>单个进程中线程间的同步（同步速度快）</p>
+<p>事件对象Event</p>
+<p>内核对象</p>
+<p>所有内核对象中最基本的。</p>
+<p>速度较慢（相比用户模式实现线程同步）</p>
+<p>多个进程间的各个线程间实现同步</p>
+<p>互斥对象Mutex</p>
+<p>内核对象</p>
+<p>代表对一个资源的独占式访问</p>
+<p>信号量</p>
+<p>Semaphore</p>
+<p>内核对象</p>
+<p>使用计数器来控制程序对一个共享资源的访问</p>
+<p>　　由于进程同步产生了一系列经典的同步问题“生产者-消费者”问题，“哲学家进餐”问题，“读者-写者”问题</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/操作系统/" rel="tag">#操作系统</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/21/数据结构/" rel="next">数据结构</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class ="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+                        老铁,扫一下
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://a4.qpic.cn/psb?/V14a1p2i4TUJ0M/*I3b0n8jso9Rv*ykvh..GOWzH4hJbVPCN4wbRP2.kRk!/m/dB8BAAAAAAAA&bo=WAKEAwAAAAARB.0!&rf=photolist" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://a4.qpic.cn/psb?/V14a1p2i4TUJ0M/*I3b0n8jso9Rv*ykvh..GOWzH4hJbVPCN4wbRP2.kRk!/m/dB8BAAAAAAAA&bo=WAKEAwAAAAARB.0!&rf=photolist" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://a1.qpic.cn/psb?/V14a1p2i4TUJ0M/Dar.uEiZaI5uB8LPq5ULpOsL*Fz05yuNPyAxovpYuZk!/m/dBgBAAAAAAAA&bo=IAM.BAAAAAARByk!&rf=photolist" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://a1.qpic.cn/psb?/V14a1p2i4TUJ0M/Dar.uEiZaI5uB8LPq5ULpOsL*Fz05yuNPyAxovpYuZk!/m/dBgBAAAAAAAA&bo=IAM.BAAAAAARByk!&rf=photolist" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://a4.qpic.cn/psb?/V14a1p2i4TUJ0M/*I3b0n8jso9Rv*ykvh..GOWzH4hJbVPCN4wbRP2.kRk!/m/dB8BAAAAAAAA&bo=WAKEAwAAAAARB.0!&rf=photolist" title="支付宝打赏" class="fancybox" rel="article0" 
+                                style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://a4.qpic.cn/psb?/V14a1p2i4TUJ0M/*I3b0n8jso9Rv*ykvh..GOWzH4hJbVPCN4wbRP2.kRk!/m/dB8BAAAAAAAA&bo=WAKEAwAAAAARB.0!&rf=photolist" title="" height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://a1.qpic.cn/psb?/V14a1p2i4TUJ0M/Dar.uEiZaI5uB8LPq5ULpOsL*Fz05yuNPyAxovpYuZk!/m/dBgBAAAAAAAA&bo=IAM.BAAAAAARByk!&rf=photolist" title="微信打赏" class="fancybox" rel="article0"
+                                style="margin-right:30%">
+                                <img src="http://a1.qpic.cn/psb?/V14a1p2i4TUJ0M/Dar.uEiZaI5uB8LPq5ULpOsL*Fz05yuNPyAxovpYuZk!/m/dBgBAAAAAAAA&bo=IAM.BAAAAAARByk!&rf=photolist" title="" height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+          <div class="comments" id="comments">
+            
+            -->
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars0.githubusercontent.com/u/20065074?v=3&u=061970aa4a0de1554030d6a79d03caa464db447d&s=400" alt="Li Xin" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Li Xin</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">学习总结 知识管理</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://github.com/XinLi96" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/5345926310" target="_blank">Weibo</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2017
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Xin
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
